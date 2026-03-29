@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    image: yiqilancezhang/node-express-app:latest
+    ports:
+      - "8080:8080"
+    restart: always
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=60
+    restart: always
